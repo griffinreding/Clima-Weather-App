@@ -9,18 +9,20 @@
 import Foundation
 
 struct WeatherData: Codable {
-    let name: String
-    let main: Main
-    let weather: [Weather]
+    public let name: String
+    public let main: Main
+    public let weather: [Weather]
 }
 
 struct Main: Codable {
-    let temp: Double
+    public let temp: Double
+    public let temp_min: Double
+    public let temp_max: Double
 }
 
 struct Weather: Codable {
-    let id: Int
-    let main: String
-    let description: String
-    let icon: String
+    public let id: Int
+    public let main: String
+    public let description: String
+    public let icon: String
 }

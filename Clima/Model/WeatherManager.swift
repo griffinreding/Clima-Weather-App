@@ -6,7 +6,7 @@
 //  Copyright © 2022 App Brewery. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
@@ -50,8 +50,10 @@ struct WeatherManager {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let id = decodedData.weather[0].id
             let temperature = decodedData.main.temp
+            let tempLow = decodedData.main.temp_min
+            let tempHigh = decodedData.main.temp_max
             let cityName = decodedData.name
-            let weather = WeatherModel(conditionID: id, cityName: cityName, temperature: temperature)
+            let weather = WeatherModel(conditionID: id, cityName: cityName, temperature: temperature, tempLow: tempLow, tempHigh: tempHigh)
             return weather
         } catch {
             delegate?.didFailWithError(error: error)

@@ -14,6 +14,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var highLow: UILabel!
     
     var weatherManager = WeatherManager()
     
@@ -52,6 +53,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityName
+            let lowString = String(format: "%.2f", weather.tempLow)
+            let highString = String(format: "%.2f", weather.tempHigh)
+            self.highLow.text = "High: \(highString) Low: \(lowString)"
             print(weather.temperature)
         }
     }
